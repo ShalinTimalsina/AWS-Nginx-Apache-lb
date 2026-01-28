@@ -19,15 +19,15 @@ architecture-diagram/lb-setup.png
 - VPC (10.0.0.0/16)
 - Public Subnet → Nginx Load Balancer
 - Private Subnet → Apache App Servers
-- Internet Gateway + Route Tables
+- Internet Gateway, Nat gateway + Route Tables
 - Security Groups:
-  - SG-Proxy → Allows HTTP/HTTPS from internet
-  - SG-App → Allows port 8080 only from SG-Proxy
+  - SG-For-Nginx → Allows HTTP/HTTPS from internet
+  - SG-For-APP → Allows port 8080 only from SG-Proxy
 - Elastic IP for Nginx
 - EC2 Instances
   - nginx-lb (public)
-  - apache-app-1 (private)
-  - apache-app-2 (private)
+  - Apache-server-1 (private)
+  - Apache-Server-2 (private)
 
 ---
 
@@ -49,3 +49,4 @@ server {
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     }
 }
+
