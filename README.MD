@@ -13,7 +13,7 @@ This project demonstrates real-world **cloud architecture**, **Linux server admi
 
 ## 🏗 Architecture Overview
 
-architecture-diagram/lb-setup.png
+Architecture Diagram/Nginx-Apache-Lb-Architecture-Diagram.png
 
 ### Components Used
 - VPC (10.0.0.0/16)
@@ -49,4 +49,5 @@ server {
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     }
 }
+
 
