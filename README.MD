@@ -265,10 +265,7 @@ sudo sed -i 's/:80/:8080/g' /etc/apache2/sites-enabled/000-default.conf
 
 - **Important Reminder**
   - After making these changes, Apache must be restarted:
-    ```bash
-    sudo systemctl restart apache2
-    ```
-
+    
 ---
 
 ### 3️⃣ Restart Apache
@@ -292,7 +289,10 @@ echo "<h1>App Server 1</h1>" | sudo tee /var/www/html/index.html
 ```bash
 echo "<h1>App Server 2</h1>" | sudo tee /var/www/html/index.html
 ```
-
+`|` → passes the output to the next command  
+- `sudo` → allows writing to a protected system directory  
+- `tee /var/www/html/index.html` → writes the content to Apache’s default web page file  
+- **Result** → visiting the server shows **App Server X** in the browser
 ---
 
 ## ⚖️ Nginx Load Balancer Configuration
@@ -356,6 +356,7 @@ App Server 2
 ```
 
 ✔ Round‑robin load balancing successful  
+
 
 
 
