@@ -84,7 +84,7 @@ This setup is intentionally designed for **hands-on practice**, **cloud networki
   ![Create VPC](Images/create-vpc.png)
 
   #### Subnet Creation
-  - Create subnets within the VPC for different availability zones
+  - Create subnets within the VPC
   - Ensure proper IP ranges for each subnet
 
   ![Creating Subnet](Images/creating-subnet.png)
@@ -397,6 +397,7 @@ App Server 2
 ```
 
 ✔ Round‑robin load balancing successful  
+
 
 
 
