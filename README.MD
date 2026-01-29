@@ -2,13 +2,18 @@
 **Public + Private Subnet Architecture | Round-Robin Load Balancing**
 
 ---
-
 <p align="center">
+
   https://img.shields.io/badge/AWS-Cloud-orange?logo=amazon-aws&style=for-the-badge
-  https://img.shields.io/badge/Nginx-Load%20Balancer-brightgreen?logo=nginx&style=for-the-badge
-  https://img.shields.io/badge/Apache-Backend%20Server-red?logo=apache&style=for-the-badge
+
+  https://img.shields.io/badge/Nginx-LoadBalancer-brightgreen?logo=nginx&style=for-the-badge
+
+  https://img.shields.io/badge/Apache-Backend-red?logo=apache&style=for-the-badge
+
   https://img.shields.io/badge/Ubuntu-22.04-blue?logo=ubuntu&style=for-the-badge
-  https://img.shields.io/badge/Architecture-Round%20Robin-purple?style=for-the-badge
+
+  <img src="https://img.shadge/Method-RoundRobin-purple?style=for-the-badge
+
 </p>
 
 ---
@@ -303,5 +308,6 @@ App Server 2
 ```
 
 ✔ Round‑robin load balancing successful  
+
 
 
