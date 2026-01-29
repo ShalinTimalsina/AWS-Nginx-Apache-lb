@@ -69,8 +69,8 @@ This setup is intentionally designed for **hands-on practice**, **cloud networki
 
 
 <details>
-<summary>AWS Setup</summary>
-## Step 1: VPC & Subnet Creation
+<summary>AWS Setup (Click here to View the setup!)</summary>
+Step 1: VPC & Subnet Creation
 <details>
 <summary>View VPC & Subnet Setup</summary>
 
@@ -384,6 +384,7 @@ App Server 2
 ```
 
 ✔ Round‑robin load balancing successful  
+
 
 
 
