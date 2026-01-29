@@ -282,8 +282,9 @@ server {
     }
 }
 
--Replace the server ip with your own.
+
 ```
+-Replace the server ip with your own.
 
 ---
 
@@ -310,6 +311,7 @@ App Server 2
 ```
 
 ✔ Round‑robin load balancing successful  
+
 
 
 
