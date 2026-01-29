@@ -29,7 +29,7 @@
 - [NAT Gateway Role in Security](#-nat-gateway-role-in-security)
 - [Temporary Bastion Access Clarification](#temporary-bastion-access-clarification)
 - [Final Security Summary](#final-security-summary)
-- [Access Strategy Bastion Style](#access-strategy-bastion-style)
+- [Access Strategy Bastion Style](#-access-strategy-bastion-style)
 - [Apache Server Configuration](#%EF%B8%8F-apache-server-configuration)
 - [Nginx Load Balancer Configuration](#%EF%B8%8F-nginx-load-balancer-configuration)
 - [Validation](#validation)
@@ -308,6 +308,7 @@ App Server 2
 ```
 
 ✔ Round‑robin load balancing successful  
+
 
 
 
