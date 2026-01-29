@@ -4,11 +4,11 @@
 ---
 
 <p align="center">
-  <img src="https://img.shields.io/badge/AWS-EC2%20%7C%20VPC%20%7C%20NAT%20Gateway-orange?logo=amazon-aws&style=for-the-badge">
- .shields.io/badge/Nginx-Reverse%20Proxy-brightgreen?logo=nginx&style=for-the-badge
-  https://img.shields.io/badge/Apache-Web%20Server-red?logo=apache&style=for-the-badge
-  <img src="https://img.shields.io/badge/Ubuntu-Server%2022.04-blue?logo=ubuntu&style=for-the-badge">
-  <img src="https://img.shields.io/badge/Load%20Balancing-Round%20Robin-purple?style=for-the-badge">
+  <img src="https://img.shields.io/badge/AWS-EC2%20%7C%20VPC%20%7C%20NAT%20Gateway-orange?logo=amazon-aws&style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Nginx-Reverse%20Proxy-brightgreen?logo=nginx&style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Apache-Web%20Server-red?logo=apache&style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Ubuntu-Server%2022.04-blue?logo=ubuntu&style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Load%20Balancing-Round%20Robin-purple?style=for-the-badge" />
 </p>
 
 ---
@@ -303,3 +303,4 @@ App Server 2
 ```
 
 ✔ Round‑robin load balancing successful  
+
