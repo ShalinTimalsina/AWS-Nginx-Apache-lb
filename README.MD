@@ -113,19 +113,19 @@ Apache App Server 2 (Private Subnet)
   ![Subnet List](Images/subnet-list.png)
 
 </details>
-## Step 2: Internet Gateway Setup
+### Step 2: Internet Gateway Setup
 > In this step, we create and attach an Internet Gateway (IGW) to our VPC to enable internet connectivity for resources.
 
 <details>
   <summary>View Internet Gateway Configuration</summary>
 
-  ### 1️⃣ Create Internet Gateway
+  ### Create Internet Gateway
   - Navigate to **VPC → Internet Gateways → Create Internet Gateway**
   - Provide a meaningful name (e.g., `MyIGW`)
   
   ![Create IGW](Images/create-igw.png)
 
-  ### 2️⃣ Attach Internet Gateway to VPC
+  ### Attach Internet Gateway to VPC
   - Select the newly created IGW
   - Click **Attach to VPC** and choose your VPC
   
@@ -422,6 +422,7 @@ App Server 2
 ```
 
 ✔ Round‑robin load balancing successful  
+
 
 
 
