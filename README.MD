@@ -250,32 +250,6 @@ echo "<h1>App Server 2</h1>" | sudo tee /var/www/html/index.html
 
 ---
 
-# Basic Apache2 Commands
-
-## Start Apache
-sudo systemctl start apache2  
-*Starts the Apache server so it can begin handling web requests.*
-
-## Stop Apache
-sudo systemctl stop apache2  
-*Stops the Apache service and ends all active requests.*
-
-## Restart Apache
-sudo systemctl restart apache2  
-*Fully restarts Apache, useful after major configuration changes.*
-
-## Reload Apache
-sudo systemctl reload apache2  
-*Reloads configuration without stopping the service (no downtime).*
-
-## Check Apache Status
-systemctl status apache2  
-*Displays whether Apache is running and shows recent service logs.*
-
-## Test Configuration Syntax
-sudo apache2ctl configtest  
-*Checks for syntax errors before applying configuration changes.*
-
 ## ⚖️ Nginx Load Balancer Configuration
 
 ### 1️⃣ Install Nginx
@@ -337,6 +311,7 @@ App Server 2
 ```
 
 ✔ Round‑robin load balancing successful  
+
 
 
 
