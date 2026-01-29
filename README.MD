@@ -90,100 +90,125 @@ Apache App Server 2 (Private Subnet)
 
 ## 📌AWS Setup Images
 
-<details>
-  <summary>Click here to view the full AWS setup</summary>
+# 📌 AWS Infrastructure Setup Guide
 
-## Step 1: VPC & Subnet Creation
-> This step covers creating a VPC and subnets, which are the foundation of your AWS network.
+This guide demonstrates a step-by-step setup of a basic AWS infrastructure including VPC, Subnets, Internet Gateway, Route Tables, Security Groups, EC2 Instances, Nginx Load Balancer, and backend Apache servers.  
+All images and explanations are provided for clarity.
+
+<details>
+  <summary>1️⃣ Click here to view the full AWS setup</summary>
+
+---
+
+## 2️⃣ Step 1: VPC & Subnet Creation
+> The Virtual Private Cloud (VPC) is the foundation of your network. Subnets divide your VPC into smaller segments for better management and security.
 
 <details>
   <summary>View VPC & Subnet Setup</summary>
 
 ### Create VPC
-- Steps for creating VPC
+- Go to **VPC → Create VPC** in the AWS console.
+- Choose a **CIDR block** (e.g., `10.0.0.0/16`) for your network.
+- Name the VPC appropriately (e.g., `MyVPC`).
 ![Create VPC](Images/create-vpc.png)
 
-### Create Subnet
-- Steps for creating Subnet
+### Create Subnets
+- Create **public and private subnets** inside your VPC.
+- Assign different IP ranges for each subnet.
 ![Creating Subnet](Images/creating-subnet.png)
 
-### Subnet List
-- Steps for verifying subnets
+### Verify Subnets
+- Ensure all subnets are correctly listed under your VPC.
 ![Subnet List](Images/subnet-list.png)
 
 </details>
 
-## Step 2: Internet Gateway Setup
-> In this step, we create and attach an Internet Gateway (IGW) to our VPC to enable internet connectivity.
+---
+
+## 3️⃣ Step 2: Internet Gateway Setup
+> The Internet Gateway (IGW) allows resources in your VPC to access the Internet.
 
 <details>
   <summary>View Internet Gateway Configuration</summary>
 
 ### Create IGW
-- Steps for creating IGW
+- Navigate to **VPC → Internet Gateways → Create Internet Gateway**.
+- Give it a descriptive name (e.g., `MyIGW`).
 ![Create IGW](Images/create-igw.png)
 
 ### Attach IGW
-- Steps for attaching IGW to VPC
+- Attach the IGW to your VPC to enable Internet connectivity for public subnets.
 ![Attach IGW](Images/attact-igw.png)
 
 </details>
 
-## Step 3: Route Tables (Public vs Private)
-> Configure routing for public and private subnets using IGW and NAT Gateway.
+---
+
+## 4️⃣ Step 3: Route Tables (Public vs Private)
+> Route tables control traffic routing. Public subnets use the IGW for Internet access, private subnets use a NAT Gateway.
 
 <details>
   <summary>View Route Table Configuration</summary>
 
 ### Public Route Table
-- Routes traffic to the Internet via IGW
+- Routes traffic from public subnets to the Internet via IGW.
 ![Public Route Table](Images/public-route-igw.png)
 
 ### Private Route Table
-- Routes traffic to the Internet via NAT Gateway
+- Routes traffic from private subnets to the Internet via NAT Gateway.
 ![Private Route Table](Images/private-route-nat.png)
 
 </details>
 
-## Step 4: Security Group Design
-> Security groups control inbound and outbound traffic for your EC2 instances.
+---
+
+## 5️⃣ Step 4: Security Group Design
+> Security Groups act as virtual firewalls, controlling inbound and outbound traffic for your instances.
 
 <details>
   <summary>View Security Group Rules</summary>
 
 ### Nginx Security Group
-- Allows inbound HTTP/HTTPS traffic
+- Allows inbound HTTP (80) and HTTPS (443) traffic.
 ![Nginx SG](Images/sg-nginx-inbound.png)
 
 ### App Server Security Group
-- Allows inbound traffic from Nginx Load Balancer
+- Allows inbound traffic from Nginx Load Balancer on application ports.
 ![App Server SG](Images/sg-app-inbound.png)
 
 </details>
 
-## Step 5: EC2 Instances
-> Deploy EC2 instances for your application and backend servers.
+---
 
+## 6️⃣ Step 5: EC2 Instances
+> Deploy EC2 instances to host your applications and backend services.
+
+- Launch EC2 instances in public/private subnets as required.
 ![EC2 Instances](Images/list-of-servers.png)
 
-## Step 6: Nginx Load Balancer
-> Configure Nginx as a load balancer and assign Elastic IPs.
+---
+
+## 7️⃣ Step 6: Nginx Load Balancer
+> Use Nginx to load balance traffic across multiple backend servers, ensuring high availability.
 
 <details>
   <summary>View Nginx EC2 & Elastic IP</summary>
 
 ### Nginx EC2
-- Configure EC2 instance for load balancing
+- Set up an EC2 instance as a load balancer.
+- Install Nginx and configure upstream servers.
 ![Nginx EC2](Images/nginx-ec2.png)
 
 ### Elastic IP
-- Associate Elastic IP to Nginx instance
+- Assign an Elastic IP to your Nginx instance for a static public address.
 ![Elastic IP](Images/nginx-eip.png)
 
 </details>
 
-## Step 7: Apache Backend Servers
-> Setup backend servers that will serve traffic through the Nginx load balancer.
+---
+
+## 8️⃣ Step 7: Apache Backend Servers
+> These servers host your applications. Nginx will distribute incoming traffic to them.
 
 ### App Server 1
 ![App Server 1](Images/apache-server-1-status.png)
@@ -191,8 +216,10 @@ Apache App Server 2 (Private Subnet)
 ### App Server 2
 ![App Server 2](Images/apache-server-2-status.png)
 
-## Step 8: Load Balancing Verification
-> Verify that traffic is being load balanced correctly between backend servers.
+---
+
+## 9️⃣ Step 8: Load Balancing Verification
+> Verify that requests to the Nginx Load Balancer are properly distributed to backend servers.
 
 ![Server 1 Response](Images/browser-server1.png)
 ![Server 2 Response](Images/browser-server2.png)
@@ -488,6 +515,7 @@ App Server 2
 ```
 
 ✔ Round‑robin load balancing successful  
+
 
 
 
