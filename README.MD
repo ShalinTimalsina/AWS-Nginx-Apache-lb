@@ -191,7 +191,7 @@ All images and explanations are provided for clarity.
 > Deploy EC2 instances to host your application servers. Use appropriate instance types based on workload requirements and subnet placement.
 
 <details>
-  <summary>Click to view details for Step 5</summary>
+  <summary>Click to view details for Step 5</summary><br>
 
 ![EC2 Instances](Images/list-of-servers.png)
 
@@ -542,6 +542,7 @@ App Server 2
 ```
 
 ✔ Round‑robin load balancing successful  
+
 
 
 
