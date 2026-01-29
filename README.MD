@@ -174,7 +174,7 @@ All images and explanations are provided for clarity.
   <summary>Click to view details for Step 4</summary>
 
 ### Nginx Security Group
-- Allows inbound HTTP (port 80) and HTTPS (port 443) traffic from the Internet.
+- Allows inbound HTTP (port 80) and HTTPS (port 443) and ssh (port 22) traffic from the Internet.
 
 ![Nginx SG](Images/sg-nginx-inbound.png)
 
@@ -542,6 +542,7 @@ App Server 2
 ```
 
 ✔ Round‑robin load balancing successful  
+
 
 
 
