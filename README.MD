@@ -4,29 +4,29 @@
 ---
 
 <p align="center">
-  <img src="https://img.shields.io/badge/AWS-EC2%20%7C%20VPC%20%7C%20NAT%20Gateway-orange?logo=amazon-aws&style=flat-square">
-  <img src="https://img.shields.io/badge/Nginx-Reverse%20Proxy-brightgreen?logo=nginx&style=flat-square">
- badge/Apache-Web%20Server-red?logo=apache&style=flat-square
-  https://img.shields.io/badge/Ubuntu-Server%2022.04-blue?logo=ubuntu&style=flat-square
-  <img src="https://img.shields.io/badge/Load%20Balancing-Round%20Robin-purple?style=flat-square">
+  <img src="https://img.shields.io/badge/AWS-EC2%20%7C%20VPC%20%7C%20NAT%20Gateway-orange?logo=amazon-aws&style=for-the-badge">
+ .shields.io/badge/Nginx-Reverse%20Proxy-brightgreen?logo=nginx&style=for-the-badge
+  https://img.shields.io/badge/Apache-Web%20Server-red?logo=apache&style=for-the-badge
+  <img src="https://img.shields.io/badge/Ubuntu-Server%2022.04-blue?logo=ubuntu&style=for-the-badge">
+  <img src="https://img.shields.io/badge/Load%20Balancing-Round%20Robin-purple?style=for-the-badge">
 </p>
 
 ---
 
 ## 📑 Table of Contents
 
-- #project-overview
-- #objectives
+- [Project Overview](#project-overview)
+- [Objectives](#objectives)
 - #-architecture-overview
   - #traffic-flow
 - #-aws-resources-used
 - #-security-group-design-detailed
 - #-nat-gateway-role-in-security
-- #-temporary-bastion-access-clarification
-- #-final-security-summary
+- [Temporary Bastion Access Clarification](#-temporary-bastion-access-clarification)
+- [Final Security Summary](#-final-security-summary)
 - #-access-strategy-bastion-style
-- [Apache Server Configuration](#-apache-server-configuration)
-- [Nginx Load Balancer Configuration](#️-nginx-load-balancer-configuration)
+- #-apache-server-configuration
+- #️-nginx-load-balancer-configuration
 - #validation
 
 ---
@@ -121,78 +121,64 @@ This security group is attached to the **Nginx Load Balancer** instance, which a
 
 #### Inbound Rules
 
-- **HTTP (80)** → `0.0.0.0/0`  
-  Allows public web traffic to reach the Nginx load balancer.
-- **SSH (22)** → Trusted IP (or temporarily `0.0.0.0/0` during setup)  
-  Used for administrative access and as a **bastion entry point** to reach private servers.
+- **HTTP (80)** → `0.0.0.0/0`
+- **SSH (22)** → Trusted IP (or temporarily `0.0.0.0/0`)
 
 #### Outbound Rules
 
 - **All traffic allowed**
 
-📌 **Purpose:**  
-- Acts as the **only public-facing entry point**  
-- Serves as a **reverse proxy + load balancer**  
-- Temporarily functions as a **bastion host** for private server access  
+📌 **Purpose:**
+
+- Public-facing entry point  
+- Reverse proxy + load balancer  
+- Temporary bastion host  
 
 ---
 
 ### 🔹 SG-For-APP (Private Apache Servers)
 
-This security group is attached to **App-Server-1** and **App-Server-2**, which are placed in private subnets.
-
 #### Inbound Rules
 
-- **TCP 8080** → **SG-For-Nginx**  
-  Allows web traffic **only from the Nginx load balancer**.  
-- **SSH (22)** → **SG-For-Nginx** *(Temporary)*  
-  Used during setup to allow the bastion host (Nginx) to SSH into private servers.
+- **TCP 8080** → **SG-For-Nginx**
+- **SSH (22)** → **SG-For-Nginx** *(Temporary)*
 
 #### Outbound Rules
 
 - **All traffic allowed**
 
-📌 **Purpose:**  
-- Prevents **direct internet access** to backend servers  
-- Ensures Apache servers only accept:  
-  - Application traffic from Nginx  
-  - Temporary administrative access from the bastion host  
+📌 **Purpose:**
+
+- No direct internet access  
+- Accepts traffic only from Nginx  
 
 ---
 
 ## 🌐 NAT Gateway Role in Security
 
-Apache servers reside in **private subnets** and do **not have public IPs**.
-
-- The **NAT Gateway** allows:
+- Private servers do **not** have public IPs  
+- NAT Gateway allows:
   - `apt update`
-  - Package installation (Apache, security updates)
-  - Outbound-only internet access
-
-- The NAT Gateway **does NOT allow inbound traffic**
+  - Package installation
+  - Outbound-only access  
+- No inbound traffic allowed
 
 📌 **Security Benefit:**  
-- Private servers remain unreachable from the internet  
-- Only **outbound connections** are permitted  
+Private servers stay isolated from the internet.
 
 ---
 
 ## Temporary Bastion Access Clarification
 
-During the initial setup phase:
+During setup:
 
-- SSH access from **SG-For-Nginx → SG-For-APP** was **temporarily enabled**
-- This allowed:
-  - Apache installation
-  - Port changes
-  - Configuration updates
+- SSH from Nginx to App servers was temporarily enabled  
+- Allowed configuration, installation & updates  
 
-📌 **Post-Setup Best Practice:**  
-- Remove SSH (22) access from SG-For-APP  
-- Retain only:  
-  - TCP 8080 from SG-For-Nginx  
+Post-setup:
 
-This hardens the environment and aligns with **production security standards**.
+- Remove SSH (22) from SG-For-APP  
+- Keep only **8080** open from Nginx  
 
 ---
 
@@ -200,19 +186,17 @@ This hardens the environment and aligns with **production security standards**.
 
 - Public traffic → **Nginx only**  
 - Backend servers → **Private & protected**  
-- NAT Gateway → **Outbound-only internet access**  
-- SG-to-SG rules → **Zero trust between tiers**  
-- Bastion access → **Temporary and controlled**  
-
-This design closely mirrors **real-world AWS production architectures**.
+- NAT Gateway → **Outbound-only**  
+- SG-to-SG rules → **Zero trust**  
+- Bastion access → **Temporary**  
 
 ---
 
 ## 🧭 Access Strategy (Bastion-Style)
 
 - `nginx-lb` acts as a **bastion host**  
-- Apache servers have **only private IPs**  
-- SSH access to private servers is done **through Nginx**  
+- Apache servers → **private IP only**  
+- SSH flows **through Nginx**  
 
 ---
 
@@ -226,9 +210,6 @@ sudo apt update
 sudo apt install apache2 -y
 ```
 
-**Explanation:**  
-Updates package lists and installs the Apache web server.
-
 ---
 
 ### 2️⃣ Change Apache Port from 80 to 8080
@@ -237,12 +218,6 @@ Updates package lists and installs the Apache web server.
 sudo sed -i 's/80/8080/g' /etc/apache2/ports.conf
 sudo sed -i 's/:80/:8080/g' /etc/apache2/sites-enabled/000-default.conf
 ```
-
-**Why this is needed:**
-
-- Nginx listens on port 80  
-- Apache servers run on port 8080  
-- Prevents port conflict and enables proxying  
 
 ---
 
@@ -267,9 +242,6 @@ echo "<h1>App Server 1</h1>" | sudo tee /var/www/html/index.html
 ```bash
 echo "<h1>App Server 2</h1>" | sudo tee /var/www/html/index.html
 ```
-
-**Purpose:**  
-Helps visually confirm round-robin load balancing.
 
 ---
 
@@ -306,13 +278,6 @@ server {
 }
 ```
 
-**Configuration Explanation**
-
-- `upstream backend_servers` defines the Apache pool  
-- Nginx uses Round Robin by default  
-- `proxy_pass` forwards traffic to backend servers  
-- `Headers` preserve client IP information  
-
 ---
 
 ### 3️⃣ Test and Reload Nginx
@@ -328,13 +293,13 @@ sudo systemctl reload nginx
 
 - Open browser  
 - Visit Elastic IP of Nginx  
-- Refresh the page multiple times  
+- Refresh multiple times  
 
-You should see:
+Expected output:
 
 ```
 App Server 1
 App Server 2
 ```
 
-Alternating on refresh ✔
+✔ Round‑robin load balancing successful  
