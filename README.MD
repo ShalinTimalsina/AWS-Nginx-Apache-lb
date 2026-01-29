@@ -24,7 +24,7 @@
 - [Objectives](#objectives)
 - [Architecture Overview](#-architecture-overview)
   - [Traffic Flow](#traffic-flow)
-- [AWS Resources Used](#aws-resources-used)
+- [AWS Resources Used](#-aws-resources-used)
 - [Security Group Design Detailed](#-security-group-design-detailed)
 - [NAT Gateway Role in Security](#-nat-gateway-role-in-security)
 - [Temporary Bastion Access Clarification](#temporary-bastion-access-clarification)
@@ -308,6 +308,7 @@ App Server 2
 ```
 
 ✔ Round‑robin load balancing successful  
+
 
 
 
