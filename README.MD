@@ -35,14 +35,15 @@ This setup is intentionally designed for **hands-on practice**, **cloud networki
 ### Traffic Flow
 
 Internet
-|
+   ↓
 Elastic IP
-|
+   ↓
 Nginx Load Balancer (Public Subnet)
-|
+   ↓
 Private IP Communication
-|
+   ↓
 Apache App Server 1 (Private Subnet)
+   ↓
 Apache App Server 2 (Private Subnet)
 
 
@@ -298,5 +299,6 @@ You should see:
     App Server 2
 
 Alternating on refresh ✔
+
 
 
