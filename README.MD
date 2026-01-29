@@ -91,49 +91,46 @@ Apache App Server 2 (Private Subnet)
 ## 📌AWS Setup Images
 
 <details>
-<summary>AWS Setup (Click here to View the setup!)</summary>
+  <summary>📌 AWS Setup (Click to View the setup!)</summary>
 
-### Step 1: VPC & Subnet Creation
-> This step covers creating a VPC and subnets, which are the foundation of your AWS network.
+  ## Step 1: VPC & Subnet Creation
+  > This step covers creating a VPC and subnets, which are the foundation of your AWS network.
 
-<details>
-  <summary>View VPC & Subnet Setup</summary>
+  <details>
+    <summary>View VPC & Subnet Setup</summary>
 
-  #### VPC Creation
-  - Create a new VPC with a suitable CIDR block
-  - Name it appropriately (e.g., `MyVPC`)
+    ### Create VPC
+    - Steps for creating VPC
+    ![Create VPC](Images/create-vpc.png)
 
-  ![Create VPC](Images/create-vpc.png)
+    ### Create Subnet
+    - Steps for creating Subnet
+    ![Create Subnet](Images/creating-subnet.png)
 
-  #### Subnet Creation
-  - Create subnets within the VPC
-  - Ensure proper IP ranges for each subnet
+    ### Subnet List
+    - Steps for verifying subnets
+    ![Subnet List](Images/subnet-list.png)
 
-  ![Creating Subnet](Images/creating-subnet.png)
-  ![Subnet List](Images/subnet-list.png)
+  </details>
 
-</details>
-### Step 2: Internet Gateway Setup
-> In this step, we create and attach an Internet Gateway (IGW) to our VPC to enable internet connectivity for resources.
+  ## Step 2: Internet Gateway Setup
+  > In this step, we create and attach an Internet Gateway (IGW) to our VPC to enable internet connectivity.
 
-<details>
-  <summary>View Internet Gateway Configuration</summary>
+  <details>
+    <summary>View Internet Gateway Configuration</summary>
 
-  ### Create Internet Gateway
-  - Navigate to **VPC → Internet Gateways → Create Internet Gateway**
-  - Provide a meaningful name (e.g., `MyIGW`)
-  
-  ![Create IGW](Images/create-igw.png)
+    ### Create IGW
+    - Steps for creating IGW
+    ![Create IGW](Images/create-igw.png)
 
-  ### Attach Internet Gateway to VPC
-  - Select the newly created IGW
-  - Click **Attach to VPC** and choose your VPC
-  
-  ![Attach IGW](Images/attach-igw.png)
+    ### Attach IGW
+    - Steps for attaching IGW to VPC
+    ![Attach IGW](Images/attach-igw.png)
+
+  </details>
 
 </details>
 
-</details>
 
 ## 🧱 AWS Resources Used
 
@@ -422,6 +419,7 @@ App Server 2
 ```
 
 ✔ Round‑robin load balancing successful  
+
 
 
 
