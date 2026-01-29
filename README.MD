@@ -327,6 +327,20 @@ server {
     }
 }
 
+- `upstream backend_servers` → defines a backend server pool for load balancing  
+- `server 10.0.2.11:8080;` → first backend application server  
+- `server 10.0.2.12:8080;` → second backend application server  
+
+- `server {}` → Nginx virtual server block  
+- `listen 80;` → Nginx listens for client requests on port 80  
+
+- `location /` → handles all incoming requests  
+- `proxy_pass http://backend_servers;` → forwards requests to the backend servers  
+- `proxy_set_header Host $host;` → forwards original host header  
+- `proxy_set_header X-Real-IP $remote_addr;` → passes real client IP  
+- `proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;` → keeps client IP chain
+
+
 
 ```
 - Replace the server ip with your own.
@@ -356,6 +370,7 @@ App Server 2
 ```
 
 ✔ Round‑robin load balancing successful  
+
 
 
 
