@@ -91,7 +91,7 @@ Apache App Server 2 (Private Subnet)
 ## 📌AWS Setup Images
 
 <details>
-  <summary>📌 AWS Setup (Click to View the setup!)</summary>
+  <summary>📌 AWS Setup (Click here to View the setup!)</summary>
 
   ## Step 1: VPC & Subnet Creation
   > This step covers creating a VPC and subnets, which are the foundation of your AWS network.
@@ -105,7 +105,7 @@ Apache App Server 2 (Private Subnet)
 
     ### Create Subnet
     - Steps for creating Subnet
-    ![Create Subnet](Images/creating-subnet.png)
+    ![Creating Subnet](Images/creating-subnet.png)
 
     ### Subnet List
     - Steps for verifying subnets
@@ -125,11 +125,80 @@ Apache App Server 2 (Private Subnet)
 
     ### Attach IGW
     - Steps for attaching IGW to VPC
-    ![Attach IGW](Images/attach-igw.png)
+    ![Attach IGW](Images/attact-igw.png)
 
   </details>
 
+  ## Step 3: Route Tables (Public vs Private)
+  > Configure routing for public and private subnets using IGW and NAT Gateway.
+
+  <details>
+    <summary>View Route Table Configuration</summary>
+
+    ### Public Route Table
+    - Routes traffic to the Internet via IGW
+    ![Public Route Table](Images/public-route-igw.png)
+
+    ### Private Route Table
+    - Routes traffic to the Internet via NAT Gateway
+    ![Private Route Table](Images/private-route-nat.png)
+
+  </details>
+
+  ## Step 4: Security Group Design
+  > Security groups control inbound and outbound traffic for your EC2 instances.
+
+  <details>
+    <summary>View Security Group Rules</summary>
+
+    ### Nginx Security Group
+    - Allows inbound HTTP/HTTPS traffic
+    ![Nginx SG](Images/sg-nginx-inbound.png)
+
+    ### App Server Security Group
+    - Allows inbound traffic from Nginx Load Balancer
+    ![App Server SG](Images/sg-app-inbound.png)
+
+  </details>
+
+  ## Step 5: EC2 Instances
+  > Deploy EC2 instances for your application and backend servers.
+
+  ![EC2 Instances](Images/list-of-servers.png)
+
+  ## Step 6: Nginx Load Balancer
+  > Configure Nginx as a load balancer and assign Elastic IPs.
+
+  <details>
+    <summary>View Nginx EC2 & Elastic IP</summary>
+
+    ### Nginx EC2
+    - Configure EC2 instance for load balancing
+    ![Nginx EC2](Images/nginx-ec2.png)
+
+    ### Elastic IP
+    - Associate Elastic IP to Nginx instance
+    ![Elastic IP](Images/nginx-eip.png)
+
+  </details>
+
+  ## Step 7: Apache Backend Servers
+  > Setup backend servers that will serve traffic through the Nginx load balancer.
+
+  ### App Server 1
+  ![App Server 1](Images/apache-server-1-status.png)
+
+  ### App Server 2
+  ![App Server 2](Images/apache-server-2-status.png)
+
+  ## Step 8: Load Balancing Verification
+  > Verify that traffic is being load balanced correctly between backend servers.
+
+  ![Server 1 Response](Images/browser-server1.png)
+  ![Server 2 Response](Images/browser-server2.png)
+
 </details>
+
 
 
 ## 🧱 AWS Resources Used
@@ -419,6 +488,7 @@ App Server 2
 ```
 
 ✔ Round‑robin load balancing successful  
+
 
 
 
