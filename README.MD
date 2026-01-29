@@ -30,7 +30,7 @@
 - [Temporary Bastion Access Clarification](#temporary-bastion-access-clarification)
 - [Final Security Summary](#final-security-summary)
 - [Access Strategy Bastion Style](#access-strategy-bastion-style)
-- [Apache Server Configuration](#apache-server-configuration)
+- [Apache Server Configuration](#%EF%B8%8F-apache-server-configuration)
 - [Nginx Load Balancer Configuration](#nginx-load-balancer-configuration)
 - [Validation](#validation)
 
@@ -308,6 +308,7 @@ App Server 2
 ```
 
 ✔ Round‑robin load balancing successful  
+
 
 
 
