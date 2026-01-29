@@ -223,6 +223,51 @@ sudo apt install apache2 -y
 sudo sed -i 's/80/8080/g' /etc/apache2/ports.conf
 sudo sed -i 's/:80/:8080/g' /etc/apache2/sites-enabled/000-default.conf
 ```
+- `sudo`  
+  - Runs the command with **root (administrator) privileges**, which is required to modify Apache configuration files under `/etc/apache2/`.
+
+- `sed`  
+  - A **stream editor** used to search, find, and replace text inside files.
+
+- `-i`  
+  - Means **in-place editing**.  
+  - The file is modified directly without creating a separate output file.
+
+- `'s/80/8080/g'`  
+  - `s` → substitute command  
+  - `80` → text to search for  
+  - `8080` → replacement text  
+  - `g` → global flag (replaces **all occurrences** in each line)
+
+- `/etc/apache2/ports.conf`  
+  - Apache configuration file that defines **which ports Apache listens on**.  
+  - This command changes Apache’s listening port from **80 to 8080**.
+
+---
+
+- `'s/:80/:8080/g'`  
+  - Searches specifically for `:80` to avoid replacing unrelated `80` values.  
+  - Replaces it with `:8080` everywhere in the file.
+
+- `/etc/apache2/sites-enabled/000-default.conf`  
+  - Default Apache **virtual host configuration** file.  
+  - This command updates the VirtualHost directive from:
+    - `<VirtualHost *:80>`
+    - to `<VirtualHost *:8080>`
+
+---
+
+- **Overall Effect**
+  - Apache stops listening on port **80**.
+  - Apache starts listening on port **8080**.
+  - The default website is now served on:
+    - `http://<server-ip>:8080`
+
+- **Important Reminder**
+  - After making these changes, Apache must be restarted:
+    ```bash
+    sudo systemctl restart apache2
+    ```
 
 ---
 
@@ -311,6 +356,7 @@ App Server 2
 ```
 
 ✔ Round‑robin load balancing successful  
+
 
 
 
