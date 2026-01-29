@@ -25,7 +25,6 @@
 - [Architecture Overview](#-architecture-overview)
   - [Traffic Flow](#traffic-flow)
 - [AWS Setup Images](#aws-setup-images)
-  - [Step 1: VPC & Subnet Creation](#step-1-vpc--subnet-creation)
 - [AWS Resources Used](#-aws-resources-used)
 - [Security Group Design Detailed](#-security-group-design-detailed)
 - [NAT Gateway Role in Security](#-nat-gateway-role-in-security)
@@ -545,6 +544,7 @@ App Server 2
 ```
 
 ✔ Round‑robin load balancing successful  
+
 
 
 
