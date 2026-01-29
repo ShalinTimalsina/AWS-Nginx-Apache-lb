@@ -73,7 +73,7 @@ This setup is intentionally designed for **hands-on practice**, **cloud networki
 <summary>View VPC & Subnet Setup</summary>
 
 <img src="Images/create-vpc.png"/>
-<img src="Images/creating-subnets.png"/>
+<img src="Images/creating-subnet.png"/>
 <img src="Images/subnet-list.png"/>
 
 </details>
@@ -382,6 +382,7 @@ App Server 2
 ```
 
 ✔ Round‑robin load balancing successful  
+
 
 
 
