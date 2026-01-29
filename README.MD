@@ -21,8 +21,8 @@ Architecture Diagram/Nginx-Apache-Lb-Architecture-Diagram.png
 - Private Subnet → Apache App Servers
 - Internet Gateway, Nat gateway + Route Tables
 - Security Groups:
-  - SG-For-Nginx → Allows HTTP/HTTPS from internet
-  - SG-For-APP → Allows port 8080 only from SG-Proxy
+  - SG-For-Nginx → Allows HTTP/HTTPS from Internet
+  - SG-For-APP → Allows port 8080 only from SG-For-Nginx
 - Elastic IP for Nginx
 - EC2 Instances
   - nginx-lb (public)
@@ -49,5 +49,6 @@ server {
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     }
 }
+
 
 
