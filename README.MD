@@ -184,7 +184,6 @@ This design closely mirrors **real-world AWS production architectures**.
 ## ⚙️ Apache Server Configuration  
 *(Performed on App-Server-1 and App-Server-2)*
 
----
 
 ### 1️⃣ Update Package Lists & Install Apache
 
@@ -192,48 +191,63 @@ This design closely mirrors **real-world AWS production architectures**.
 sudo apt update
 sudo apt install apache2 -y
 ```
-----
-
 Explanation:
 Updates package lists and installs the Apache web server.
+
+---
+
 2️⃣ Change Apache Port from 80 to 8080
 
+```bash
 sudo sed -i 's/80/8080/g' /etc/apache2/ports.conf
 sudo sed -i 's/:80/:8080/g' /etc/apache2/sites-enabled/000-default.conf
-
+```
 Why this is needed:
 
-    Nginx listens on port 80
+   - Nginx listens on port 80
 
-    Apache servers run on port 8080
+   - Apache servers run on port 8080
 
-    Prevents port conflict and enables proxying
+   - Prevents port conflict and enables proxying
+
+---
 
 3️⃣ Restart Apache
 
+```bash
 sudo systemctl restart apache2
+```
+---
 
 4️⃣ Create Custom Index Page
+
 App-Server-1
-
+```bash
 echo "<h1>App Server 1</h1>" | sudo tee /var/www/html/index.html
-
+```
 App-Server-2
-
+```bash
 echo "<h1>App Server 2</h1>" | sudo tee /var/www/html/index.html
-
+```
 Purpose:
 Helps visually confirm round-robin load balancing.
+
+---
+
 ⚖️ Nginx Load Balancer Configuration
+
 1️⃣ Install Nginx
 
-``` sudo apt update
+```bash
+sudo apt update
 sudo apt install nginx -y
+```
+---
 
 2️⃣ Configure Nginx Reverse Proxy
 
 📄 File: /etc/nginx/sites-available/default
-
+```bash
 upstream backend_servers {
     server 10.0.2.11:8080;
     server 10.0.2.12:8080;
@@ -249,29 +263,33 @@ server {
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     }
 }
-
+```
 Configuration Explanation
 
-    upstream backend_servers defines the Apache pool
+   - `upstream backend_servers` defines the Apache pool
 
-    Nginx uses Round Robin by default
+   - Nginx uses Round Robin by default
 
-    proxy_pass forwards traffic to backend servers
+   - `proxy_pass` forwards traffic to backend servers
 
-    Headers preserve client IP information
+   - `Headers` preserve client IP information
+---
 
 3️⃣ Test and Reload Nginx
 
+```bash
 sudo nginx -t
 sudo systemctl reload nginx
+```
+---
 
-✅ Validation
+**Validation**
 
-    Open browser
+   - Open browser
 
-    Visit Elastic IP of Nginx
+   - Visit Elastic IP of Nginx
 
-    Refresh the page multiple times
+   - Refresh the page multiple times
 
 You should see:
 
@@ -280,4 +298,5 @@ You should see:
     App Server 2
 
 Alternating on refresh ✔
+
 
