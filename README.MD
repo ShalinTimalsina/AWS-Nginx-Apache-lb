@@ -24,7 +24,7 @@
 - [Objectives](#objectives)
 - [Architecture Overview](#-architecture-overview)
   - [Traffic Flow](#traffic-flow)
-- [AWS Setup](#aws-setup)
+- [AWS Setup Images](#aws-setup)
 - [AWS Resources Used](#-aws-resources-used)
 - [Security Group Design Detailed](#-security-group-design-detailed)
 - [NAT Gateway Role in Security](#-nat-gateway-role-in-security)
@@ -88,7 +88,7 @@ Apache App Server 2 (Private Subnet)
 
 ---
 
-## 📌AWS Setup
+## 📌AWS Setup Images
 
 <details>
 <summary>AWS Setup (Click here to View the setup!)</summary>
@@ -402,6 +402,7 @@ App Server 2
 ```
 
 ✔ Round‑robin load balancing successful  
+
 
 
 
