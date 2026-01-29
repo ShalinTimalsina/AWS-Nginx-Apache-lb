@@ -18,7 +18,7 @@
 
 ---
 
--## Table of Contents
+## Table of Contents
 
 - [Project Overview](#project-overview)
 - [Objectives](#objectives)
@@ -308,6 +308,7 @@ App Server 2
 ```
 
 ✔ Round‑robin load balancing successful  
+
 
 
 
