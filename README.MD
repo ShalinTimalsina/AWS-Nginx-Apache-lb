@@ -1,9 +1,37 @@
-# AWS Nginx Load Balancer with Two Apache Servers  
+# AWS Nginx Load Balancer with Two Apache Servers
 **Public + Private Subnet Architecture | Round-Robin Load Balancing**
 
 ---
 
-##  Project Overview
+<p align="center">
+  <img src="https://img.shields.io/badge/AWS-EC2%20%7C%20VPC%20%7C%20NAT%20Gateway-orange?logo=amazon-aws&style=flat-square">
+  <img src="https://img.shields.io/badge/Nginx-Reverse%20Proxy-brightgreen?logo=nginx&style=flat-square">
+ badge/Apache-Web%20Server-red?logo=apache&style=flat-square
+  https://img.shields.io/badge/Ubuntu-Server%2022.04-blue?logo=ubuntu&style=flat-square
+  <img src="https://img.shields.io/badge/Load%20Balancing-Round%20Robin-purple?style=flat-square">
+</p>
+
+---
+
+## 📑 Table of Contents
+
+- #project-overview
+- #objectives
+- #-architecture-overview
+  - #traffic-flow
+- #-aws-resources-used
+- #-security-group-design-detailed
+- #-nat-gateway-role-in-security
+- #-temporary-bastion-access-clarification
+- #-final-security-summary
+- #-access-strategy-bastion-style
+- [Apache Server Configuration](#-apache-server-configuration)
+- [Nginx Load Balancer Configuration](#️-nginx-load-balancer-configuration)
+- #validation
+
+---
+
+## Project Overview
 
 This project demonstrates a **production-style AWS architecture** using a custom VPC where:
 
@@ -17,7 +45,7 @@ This setup is intentionally designed for **hands-on practice**, **cloud networki
 
 ---
 
-##  Objectives
+## Objectives
 
 - Understand **public vs private subnet architecture**
 - Implement **Nginx reverse proxy & load balancing**
@@ -35,6 +63,7 @@ This setup is intentionally designed for **hands-on practice**, **cloud networki
 </p>
 
 ### Traffic Flow
+
 ```
 Internet
    ↓
@@ -49,12 +78,12 @@ Apache App Server 1 (Private Subnet)
 Apache App Server 2 (Private Subnet)
 ```
 
-
 ---
 
 ## 🧱 AWS Resources Used
 
 ### Networking
+
 - **VPC:** `10.0.0.0/16`
 - **Public Subnet:** Nginx Load Balancer
 - **Private Subnet:** Apache App Servers
@@ -91,19 +120,20 @@ This architecture follows the **principle of least privilege** while allowing te
 This security group is attached to the **Nginx Load Balancer** instance, which also acts as a **temporary bastion host**.
 
 #### Inbound Rules
+
 - **HTTP (80)** → `0.0.0.0/0`  
   Allows public web traffic to reach the Nginx load balancer.
-
 - **SSH (22)** → Trusted IP (or temporarily `0.0.0.0/0` during setup)  
   Used for administrative access and as a **bastion entry point** to reach private servers.
 
 #### Outbound Rules
+
 - **All traffic allowed**
 
-📌 **Purpose:**
-- Acts as the **only public-facing entry point**
-- Serves as a **reverse proxy + load balancer**
-- Temporarily functions as a **bastion host** for private server access
+📌 **Purpose:**  
+- Acts as the **only public-facing entry point**  
+- Serves as a **reverse proxy + load balancer**  
+- Temporarily functions as a **bastion host** for private server access  
 
 ---
 
@@ -112,20 +142,21 @@ This security group is attached to the **Nginx Load Balancer** instance, which a
 This security group is attached to **App-Server-1** and **App-Server-2**, which are placed in private subnets.
 
 #### Inbound Rules
-- **TCP 8080** → **SG-For-Nginx**  
-  Allows web traffic **only from the Nginx load balancer**.
 
+- **TCP 8080** → **SG-For-Nginx**  
+  Allows web traffic **only from the Nginx load balancer**.  
 - **SSH (22)** → **SG-For-Nginx** *(Temporary)*  
   Used during setup to allow the bastion host (Nginx) to SSH into private servers.
 
 #### Outbound Rules
+
 - **All traffic allowed**
 
-📌 **Purpose:**
-- Prevents **direct internet access** to backend servers
-- Ensures Apache servers only accept:
-  - Application traffic from Nginx
-  - Temporary administrative access from the bastion host
+📌 **Purpose:**  
+- Prevents **direct internet access** to backend servers  
+- Ensures Apache servers only accept:  
+  - Application traffic from Nginx  
+  - Temporary administrative access from the bastion host  
 
 ---
 
@@ -140,13 +171,13 @@ Apache servers reside in **private subnets** and do **not have public IPs**.
 
 - The NAT Gateway **does NOT allow inbound traffic**
 
-📌 **Security Benefit:**
-- Private servers remain unreachable from the internet
-- Only **outbound connections** are permitted
+📌 **Security Benefit:**  
+- Private servers remain unreachable from the internet  
+- Only **outbound connections** are permitted  
 
 ---
 
-##  Temporary Bastion Access Clarification
+## Temporary Bastion Access Clarification
 
 During the initial setup phase:
 
@@ -156,37 +187,37 @@ During the initial setup phase:
   - Port changes
   - Configuration updates
 
-📌 **Post-Setup Best Practice:**
-- Remove SSH (22) access from SG-For-APP
-- Retain only:
-  - TCP 8080 from SG-For-Nginx
+📌 **Post-Setup Best Practice:**  
+- Remove SSH (22) access from SG-For-APP  
+- Retain only:  
+  - TCP 8080 from SG-For-Nginx  
 
 This hardens the environment and aligns with **production security standards**.
 
 ---
 
-##  Final Security Summary
+## Final Security Summary
 
-- Public traffic → **Nginx only**
-- Backend servers → **Private & protected**
-- NAT Gateway → **Outbound-only internet access**
-- SG-to-SG rules → **Zero trust between tiers**
-- Bastion access → **Temporary and controlled**
+- Public traffic → **Nginx only**  
+- Backend servers → **Private & protected**  
+- NAT Gateway → **Outbound-only internet access**  
+- SG-to-SG rules → **Zero trust between tiers**  
+- Bastion access → **Temporary and controlled**  
 
 This design closely mirrors **real-world AWS production architectures**.
 
+---
 
 ## 🧭 Access Strategy (Bastion-Style)
 
-- `nginx-lb` acts as a **bastion host**
-- Apache servers have **only private IPs**
-- SSH access to private servers is done **through Nginx**
+- `nginx-lb` acts as a **bastion host**  
+- Apache servers have **only private IPs**  
+- SSH access to private servers is done **through Nginx**  
 
 ---
 
 ## ⚙️ Apache Server Configuration  
 *(Performed on App-Server-1 and App-Server-2)*
-
 
 ### 1️⃣ Update Package Lists & Install Apache
 
@@ -194,62 +225,69 @@ This design closely mirrors **real-world AWS production architectures**.
 sudo apt update
 sudo apt install apache2 -y
 ```
-Explanation:
+
+**Explanation:**  
 Updates package lists and installs the Apache web server.
 
 ---
 
-2️⃣ Change Apache Port from 80 to 8080
+### 2️⃣ Change Apache Port from 80 to 8080
 
 ```bash
 sudo sed -i 's/80/8080/g' /etc/apache2/ports.conf
 sudo sed -i 's/:80/:8080/g' /etc/apache2/sites-enabled/000-default.conf
 ```
-Why this is needed:
 
-   - Nginx listens on port 80
+**Why this is needed:**
 
-   - Apache servers run on port 8080
-
-   - Prevents port conflict and enables proxying
+- Nginx listens on port 80  
+- Apache servers run on port 8080  
+- Prevents port conflict and enables proxying  
 
 ---
 
-3️⃣ Restart Apache
+### 3️⃣ Restart Apache
 
 ```bash
 sudo systemctl restart apache2
 ```
+
 ---
 
-4️⃣ Create Custom Index Page
+### 4️⃣ Create Custom Index Page
 
-App-Server-1
+**App-Server-1**
+
 ```bash
 echo "<h1>App Server 1</h1>" | sudo tee /var/www/html/index.html
 ```
-App-Server-2
+
+**App-Server-2**
+
 ```bash
 echo "<h1>App Server 2</h1>" | sudo tee /var/www/html/index.html
 ```
-Purpose:
+
+**Purpose:**  
 Helps visually confirm round-robin load balancing.
 
 ---
 
-⚖️ Nginx Load Balancer Configuration
+## ⚖️ Nginx Load Balancer Configuration
 
-1️⃣ Install Nginx
+### 1️⃣ Install Nginx
 
 ```bash
 sudo apt update
 sudo apt install nginx -y
 ```
+
 ---
 
-2️⃣ Configure Nginx Reverse Proxy
+### 2️⃣ Configure Nginx Reverse Proxy
 
-📄 File: /etc/nginx/sites-available/default
+📄 **File:** `/etc/nginx/sites-available/default`
+
 ```bash
 upstream backend_servers {
     server 10.0.2.11:8080;
@@ -267,44 +305,36 @@ server {
     }
 }
 ```
-Configuration Explanation
 
-   - `upstream backend_servers` defines the Apache pool
+**Configuration Explanation**
 
-   - Nginx uses Round Robin by default
+- `upstream backend_servers` defines the Apache pool  
+- Nginx uses Round Robin by default  
+- `proxy_pass` forwards traffic to backend servers  
+- `Headers` preserve client IP information  
 
-   - `proxy_pass` forwards traffic to backend servers
-
-   - `Headers` preserve client IP information
 ---
 
-3️⃣ Test and Reload Nginx
+### 3️⃣ Test and Reload Nginx
 
 ```bash
 sudo nginx -t
 sudo systemctl reload nginx
 ```
+
 ---
 
-**Validation**
+## Validation
 
-   - Open browser
-
-   - Visit Elastic IP of Nginx
-
-   - Refresh the page multiple times
+- Open browser  
+- Visit Elastic IP of Nginx  
+- Refresh the page multiple times  
 
 You should see:
 
-    App Server 1
-
-    App Server 2
+```
+App Server 1
+App Server 2
+```
 
 Alternating on refresh ✔
-
-
-
-
-
-
-
