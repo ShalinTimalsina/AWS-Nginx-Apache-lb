@@ -93,6 +93,7 @@ Apache App Server 2 (Private Subnet)
 <summary>AWS Infrastructure Setup Guide</summary><br>
 
 This guide demonstrates a step-by-step setup of a basic AWS infrastructure including VPC, Subnets, Internet Gateway, Route Tables, Security Groups, EC2 Instances, Nginx Load Balancer, and backend Apache servers.  
+
 All images and explanations are provided for clarity.
 
 ---
@@ -541,6 +542,7 @@ App Server 2
 ```
 
 ✔ Round‑robin load balancing successful  
+
 
 
 
