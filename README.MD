@@ -40,8 +40,8 @@
 
 This project demonstrates a **production-style AWS architecture** using a custom VPC where:
 
-- **Nginx** acts as a **Reverse Proxy + Load Balancer**
-- **Two Apache web servers** run in **private subnets**
+- **Nginx** acts as a **Reverse Proxy + Load Balancer** in port `80`
+- **Two Apache web servers** run in **private subnets** in port `8080`
 - Traffic flows securely from **Internet → Nginx → Apache servers**
 - **Round-Robin load balancing** distributes requests evenly
 - Backend servers are **not publicly accessible**
@@ -100,9 +100,9 @@ Apache App Server 2 (Private Subnet)
 
 | Instance Name | Role | Subnet |
 |--------------|------|--------|
-| nginx-lb | Nginx Reverse Proxy & Load Balancer | Public |
-| App-Server-1 | Apache Web Server | Private |
-| App-Server-2 | Apache Web Server | Private |
+| nginx-lb (80) | Nginx Reverse Proxy & Load Balancer | Public |
+| App-Server-1(8080) | Apache Web Server | Private |
+| App-Server-2(8080) | Apache Web Server | Private |
 
 - Instance Type: **t3.micro**
 - OS: **Ubuntu**
@@ -311,6 +311,7 @@ App Server 2
 ```
 
 ✔ Round‑robin load balancing successful  
+
 
 
 
