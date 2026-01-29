@@ -242,12 +242,12 @@ All images and explanations are provided for clarity.
   <summary>Click to view details for Step 8</summary>
 
 ### Server Response
-- Displays content served by App Server 1 initially that uses `Round-Robin`.
+- Displays content served by App Server 1 initially, using `Round-Robin`.
 
 ![Server 1 Response](Images/browser-server1.png)
 
 ### Server Response
-- Displays content served by App Server 2 after a reload that uses `Round-Robin`.
+- Displays content served by App Server 2 after a reload, using `Round-Robin`.
 
 ![Server 2 Response](Images/browser-server2.png)
 
@@ -544,6 +544,7 @@ App Server 2
 ```
 
 ✔ Round‑robin load balancing successful  
+
 
 
 
