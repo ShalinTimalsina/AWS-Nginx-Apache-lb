@@ -326,6 +326,7 @@ server {
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     }
 }
+```
 
 - `upstream backend_servers` → defines a backend server pool for load balancing  
 - `server 10.0.2.11:8080;` → first backend application server  
@@ -342,7 +343,7 @@ server {
 
 
 
-```
+
 - Replace the server ip with your own.
 
 ---
@@ -370,6 +371,7 @@ App Server 2
 ```
 
 ✔ Round‑robin load balancing successful  
+
 
 
 
