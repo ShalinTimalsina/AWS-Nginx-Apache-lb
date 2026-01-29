@@ -3,16 +3,19 @@
 
 ---
 <p align="center">
-
-  <img src="https://img.shields.io/badge/AWS-Cloud-orange?logo=amazon-aws&style=for-the-badge" />
-
-  <img src="https://img.shields.io/badge/Nginx-LoadBalancer-brightgreen?logo=nginx&ttps://img.shields.io/badge/Apache-Backend-red?logo=apache&style=for-the-badge
-
-  https://img.shields.io/badge/Ubuntu-22.04-blue?logo=ubuntu&style=for-the-badge
-
-  https://img.shields.io/badge/Method-RoundRobin-purple?style=for-the-badge
-
+  <img src="https://img.shields.io/badge/AWS-Cloud-orange?logo=amazonaws&style=for-the-badge" />
 </p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Nginx-LoadBalancer-brightgreen?logo=nginx&style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Apache-Backend-red?logo=apache&style=for-the-badge" />
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Ubuntu-22.04-blue?logo=ubuntu&style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Method-Round%20Robin-purple?style=for-the-badge" />
+</p>
+
 ---
 
 ## 📑 Table of Contents
@@ -305,6 +308,7 @@ App Server 2
 ```
 
 ✔ Round‑robin load balancing successful  
+
 
 
 
