@@ -104,15 +104,18 @@ All images and explanations are provided for clarity.
 - Navigate to **VPC → Create VPC** in the AWS console.
 - Choose a **CIDR block** (e.g., `10.0.0.0/16`) for your network.
 - Name the VPC appropriately (e.g., `MyVPC`).
+
 ![Create VPC](Images/create-vpc.png)
 
 ### Create Subnet
 - Create **public and private subnets** within your VPC.
 - Assign different IP ranges for each subnet.
+
 ![Creating Subnet](Images/creating-subnet.png)
 
 ### Verify Subnets
 - Ensure all subnets are correctly listed under your VPC.
+
 ![Subnet List](Images/subnet-list.png)
 
 ---
@@ -123,10 +126,12 @@ All images and explanations are provided for clarity.
 ### Create IGW
 - Navigate to **VPC → Internet Gateways → Create Internet Gateway**.
 - Provide a descriptive name (e.g., `MyIGW`).
+
 ![Create IGW](Images/create-igw.png)
 
 ### Attach IGW
 - Attach the IGW to your VPC to enable Internet connectivity for public subnets.
+
 ![Attach IGW](Images/attact-igw.png)
 
 ---
@@ -136,10 +141,12 @@ All images and explanations are provided for clarity.
 
 ### Public Route Table
 - Routes traffic from public subnets to the Internet via IGW.
+
 ![Public Route Table](Images/public-route-igw.png)
 
 ### Private Route Table
 - Routes traffic from private subnets to the Internet via NAT Gateway.
+
 ![Private Route Table](Images/private-route-nat.png)
 
 ---
@@ -149,10 +156,12 @@ All images and explanations are provided for clarity.
 
 ### Nginx Security Group
 - Allows inbound HTTP (port 80) and HTTPS (port 443) traffic from the Internet.
+
 ![Nginx SG](Images/sg-nginx-inbound.png)
 
 ### App Server Security Group
 - Allows inbound traffic from Nginx Load Balancer on application ports.
+
 ![App Server SG](Images/sg-app-inbound.png)
 
 ---
@@ -168,40 +177,41 @@ All images and explanations are provided for clarity.
 > Use Nginx as a load balancer to distribute incoming traffic across multiple backend servers. Assigning an Elastic IP ensures a static public address.
 
 ![Nginx EC2](Images/nginx-ec2.png)
+
 ![Elastic IP](Images/nginx-eip.png)
 
 ---
 
-## Step 7: Apache Backend Servers
-> These servers host your applications. The Nginx Load Balancer will distribute traffic evenly across them to ensure high availability.
-
 <details>
-  <summary>View Apache Backend Servers</summary>
+  <summary>Step 7: Apache Backend Servers (Click to Expand)</summary>
+
+> These servers host your applications. The Nginx Load Balancer will distribute traffic evenly across them to ensure high availability.
 
 ### App Server 1
 - Hosts part of your application or service.
+
 ![App Server 1](Images/apache-server-1-status.png)
 
 ### App Server 2
 - Hosts another part of your application to ensure redundancy.
+
 ![App Server 2](Images/apache-server-2-status.png)
 
 </details>
 
----
-
-## Step 8: Load Balancing Verification
-> After configuring Nginx and backend servers, test that traffic is being correctly distributed and served by both backend servers.
-
 <details>
-  <summary>View Load Balancing Verification</summary>
+  <summary>Step 8: Load Balancing Verification (Click to Expand)</summary>
+
+> After configuring Nginx and backend servers, test that traffic is being correctly distributed and served by both backend servers.
 
 ### Server 1 Response
 - Displays content served by App Server 1.
+
 ![Server 1 Response](Images/browser-server1.png)
 
 ### Server 2 Response
 - Displays content served by App Server 2.
+
 ![Server 2 Response](Images/browser-server2.png)
 
 </details>
@@ -496,6 +506,7 @@ App Server 2
 ```
 
 ✔ Round‑robin load balancing successful  
+
 
 
 
