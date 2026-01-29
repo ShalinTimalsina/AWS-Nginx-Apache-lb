@@ -69,17 +69,30 @@ This setup is intentionally designed for **hands-on practice**, **cloud networki
 
 
 <details>
-<summary>AWS Setup (Click here to View the setup!)</summary>
-Step 1: VPC & Subnet Creation
+<summary>📌 AWS Setup (Click here to View the setup!)</summary>
+
+### Step 1: VPC & Subnet Creation
+> This step covers creating a VPC and subnets, which are the foundation of your AWS network.
+
 <details>
-<summary>View VPC & Subnet Setup</summary>
+  <summary>View VPC & Subnet Setup</summary>
 
-<img src="Images/create-vpc.png"/>
-<img src="Images/creating-subnet.png"/>
-<img src="Images/subnet-list.png"/>
+  #### VPC Creation
+  - Create a new VPC with a suitable CIDR block
+  - Name it appropriately (e.g., `MyVPC`)
+
+  ![Create VPC](Images/create-vpc.png)
+
+  #### Subnet Creation
+  - Create subnets within the VPC for different availability zones
+  - Ensure proper IP ranges for each subnet
+
+  ![Creating Subnet](Images/creating-subnet.png)
+  ![Subnet List](Images/subnet-list.png)
 
 </details>
 </details>
+
 ### Traffic Flow
 
 ```
@@ -384,6 +397,7 @@ App Server 2
 ```
 
 ✔ Round‑robin load balancing successful  
+
 
 
 
