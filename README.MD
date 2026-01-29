@@ -207,7 +207,7 @@ Post-setup:
 
 ---
 
-##📌AWS Setup
+## 📌AWS Setup
 
 <details>
 <summary>AWS Setup (Click here to View the setup!)</summary>
@@ -401,6 +401,7 @@ App Server 2
 ```
 
 ✔ Round‑robin load balancing successful  
+
 
 
 
