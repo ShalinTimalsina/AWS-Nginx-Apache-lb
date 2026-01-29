@@ -281,6 +281,8 @@ server {
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     }
 }
+
+-Replace the server ip with your own.
 ```
 
 ---
@@ -308,6 +310,7 @@ App Server 2
 ```
 
 ✔ Round‑robin load balancing successful  
+
 
 
 
