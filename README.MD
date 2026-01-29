@@ -4,7 +4,7 @@ This is a production‑style, cost‑efficient AWS architecture that uses:
 
 - **Nginx** as a reverse proxy + load balancer (public subnet)  
 - **Two Apache servers** hosting web applications (private subnet)  
-- **Elastic IP**, **Security Groups**, and **custom VPC**  
+- **Elastic IP**,**Internet Gateway**,**Nat Gateway**,**Security Groups**,and**custom VPC**  
 - **Round Robin load balancing**
 
 This project demonstrates real-world **cloud architecture**, **Linux server administration**, **Nginx/Apache skills**, and **DevOps-level configuration understanding**.
@@ -49,6 +49,7 @@ server {
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     }
 }
+
 
 
 
