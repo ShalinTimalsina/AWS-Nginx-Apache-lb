@@ -68,30 +68,6 @@ This setup is intentionally designed for **hands-on practice**, **cloud networki
 </p>
 
 
-<details>
-<summary>📌 AWS Setup (Click here to View the setup!)</summary>
-
-### Step 1: VPC & Subnet Creation
-> This step covers creating a VPC and subnets, which are the foundation of your AWS network.
-
-<details>
-  <summary>View VPC & Subnet Setup</summary>
-
-  #### VPC Creation
-  - Create a new VPC with a suitable CIDR block
-  - Name it appropriately (e.g., `MyVPC`)
-
-  ![Create VPC](Images/create-vpc.png)
-
-  #### Subnet Creation
-  - Create subnets within the VPC
-  - Ensure proper IP ranges for each subnet
-
-  ![Creating Subnet](Images/creating-subnet.png)
-  ![Subnet List](Images/subnet-list.png)
-
-</details>
-</details>
 
 ### Traffic Flow
 
@@ -230,6 +206,34 @@ Post-setup:
 - SSH flows **through Nginx**  
 
 ---
+
+##📌AWS Setup
+
+<details>
+<summary>AWS Setup (Click here to View the setup!)</summary>
+
+### Step 1: VPC & Subnet Creation
+> This step covers creating a VPC and subnets, which are the foundation of your AWS network.
+
+<details>
+  <summary>View VPC & Subnet Setup</summary>
+
+  #### VPC Creation
+  - Create a new VPC with a suitable CIDR block
+  - Name it appropriately (e.g., `MyVPC`)
+
+  ![Create VPC](Images/create-vpc.png)
+
+  #### Subnet Creation
+  - Create subnets within the VPC
+  - Ensure proper IP ranges for each subnet
+
+  ![Creating Subnet](Images/creating-subnet.png)
+  ![Subnet List](Images/subnet-list.png)
+
+</details>
+</details>
+
 
 ## ⚙️ Apache Server Configuration  
 *(Performed on App-Server-1 and App-Server-2)*
@@ -397,6 +401,7 @@ App Server 2
 ```
 
 ✔ Round‑robin load balancing successful  
+
 
 
 
