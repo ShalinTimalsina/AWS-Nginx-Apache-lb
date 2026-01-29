@@ -203,7 +203,7 @@ All images and explanations are provided for clarity.
 > Use Nginx as a load balancer to distribute incoming traffic across multiple backend servers. Assigning an Elastic IP ensures a static public address.
 
 <details>
-  <summary>Click to view details for Step 6</summary>
+  <summary>Click to view details for Step 6</summary><br>
 
 ![Nginx EC2](Images/nginx-ec2.png)
 
@@ -220,12 +220,14 @@ All images and explanations are provided for clarity.
   <summary>Click to view details for Step 7</summary>
 
 ### App Server 1
-- Hosts part of your application or service.
+- Hosts the Application Server-1.
+- Apache2 is running successfully, its service status is checked, and it confirms that Apache is listening on port 8080.
 
 ![App Server 1](Images/apache-server-1-status.png)
 
 ### App Server 2
-- Hosts another part of your application to ensure redundancy.
+- Hosts the application Server-2.
+- Apache2 is running successfully, its service status is checked, and it confirms that Apache is listening on port 8080.
 
 ![App Server 2](Images/apache-server-2-status.png)
 
@@ -542,6 +544,7 @@ App Server 2
 ```
 
 ✔ Round‑robin load balancing successful  
+
 
 
 
