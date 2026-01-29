@@ -191,6 +191,8 @@ This design closely mirrors **real-world AWS production architectures**.
 ```bash
 sudo apt update
 sudo apt install apache2 -y
+```
+----
 
 Explanation:
 Updates package lists and installs the Apache web server.
@@ -278,3 +280,4 @@ You should see:
     App Server 2
 
 Alternating on refresh ✔
+
