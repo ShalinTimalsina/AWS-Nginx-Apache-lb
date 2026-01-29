@@ -90,30 +90,24 @@ Apache App Server 2 (Private Subnet)
 
 ## 📌AWS Setup Images
 
-# 📌 AWS Infrastructure Setup Guide
+# AWS Infrastructure Setup Guide
 
 This guide demonstrates a step-by-step setup of a basic AWS infrastructure including VPC, Subnets, Internet Gateway, Route Tables, Security Groups, EC2 Instances, Nginx Load Balancer, and backend Apache servers.  
 All images and explanations are provided for clarity.
 
-<details>
-  <summary>1️⃣ Click here to view the full AWS setup</summary>
-
 ---
 
-## 2️⃣ Step 1: VPC & Subnet Creation
-> The Virtual Private Cloud (VPC) is the foundation of your network. Subnets divide your VPC into smaller segments for better management and security.
-
-<details>
-  <summary>View VPC & Subnet Setup</summary>
+## Step 1: VPC & Subnet Creation
+> The Virtual Private Cloud (VPC) is the foundation of your network. Subnets divide your VPC into smaller segments for better management, isolation, and security.
 
 ### Create VPC
-- Go to **VPC → Create VPC** in the AWS console.
+- Navigate to **VPC → Create VPC** in the AWS console.
 - Choose a **CIDR block** (e.g., `10.0.0.0/16`) for your network.
 - Name the VPC appropriately (e.g., `MyVPC`).
 ![Create VPC](Images/create-vpc.png)
 
-### Create Subnets
-- Create **public and private subnets** inside your VPC.
+### Create Subnet
+- Create **public and private subnets** within your VPC.
 - Assign different IP ranges for each subnet.
 ![Creating Subnet](Images/creating-subnet.png)
 
@@ -121,34 +115,24 @@ All images and explanations are provided for clarity.
 - Ensure all subnets are correctly listed under your VPC.
 ![Subnet List](Images/subnet-list.png)
 
-</details>
-
 ---
 
-## 3️⃣ Step 2: Internet Gateway Setup
-> The Internet Gateway (IGW) allows resources in your VPC to access the Internet.
-
-<details>
-  <summary>View Internet Gateway Configuration</summary>
+## Step 2: Internet Gateway Setup
+> The Internet Gateway (IGW) allows resources in your VPC to access the Internet. Without an IGW, public subnets cannot communicate externally.
 
 ### Create IGW
 - Navigate to **VPC → Internet Gateways → Create Internet Gateway**.
-- Give it a descriptive name (e.g., `MyIGW`).
+- Provide a descriptive name (e.g., `MyIGW`).
 ![Create IGW](Images/create-igw.png)
 
 ### Attach IGW
 - Attach the IGW to your VPC to enable Internet connectivity for public subnets.
 ![Attach IGW](Images/attact-igw.png)
 
-</details>
-
 ---
 
-## 4️⃣ Step 3: Route Tables (Public vs Private)
-> Route tables control traffic routing. Public subnets use the IGW for Internet access, private subnets use a NAT Gateway.
-
-<details>
-  <summary>View Route Table Configuration</summary>
+## Step 3: Route Tables (Public vs Private)
+> Route tables control the flow of traffic. Public subnets are routed via the IGW for Internet access, while private subnets route traffic through a NAT Gateway.
 
 ### Public Route Table
 - Routes traffic from public subnets to the Internet via IGW.
@@ -158,73 +142,70 @@ All images and explanations are provided for clarity.
 - Routes traffic from private subnets to the Internet via NAT Gateway.
 ![Private Route Table](Images/private-route-nat.png)
 
-</details>
-
 ---
 
-## 5️⃣ Step 4: Security Group Design
-> Security Groups act as virtual firewalls, controlling inbound and outbound traffic for your instances.
-
-<details>
-  <summary>View Security Group Rules</summary>
+## Step 4: Security Group Design
+> Security Groups act as virtual firewalls, controlling inbound and outbound traffic for your instances. Proper configuration ensures only legitimate traffic reaches your resources.
 
 ### Nginx Security Group
-- Allows inbound HTTP (80) and HTTPS (443) traffic.
+- Allows inbound HTTP (port 80) and HTTPS (port 443) traffic from the Internet.
 ![Nginx SG](Images/sg-nginx-inbound.png)
 
 ### App Server Security Group
 - Allows inbound traffic from Nginx Load Balancer on application ports.
 ![App Server SG](Images/sg-app-inbound.png)
 
-</details>
-
 ---
 
-## 6️⃣ Step 5: EC2 Instances
-> Deploy EC2 instances to host your applications and backend services.
+## Step 5: EC2 Instances
+> Deploy EC2 instances to host your application servers. Use appropriate instance types based on workload requirements and subnet placement.
 
-- Launch EC2 instances in public/private subnets as required.
 ![EC2 Instances](Images/list-of-servers.png)
 
 ---
 
-## 7️⃣ Step 6: Nginx Load Balancer
-> Use Nginx to load balance traffic across multiple backend servers, ensuring high availability.
+## Step 6: Nginx Load Balancer
+> Use Nginx as a load balancer to distribute incoming traffic across multiple backend servers. Assigning an Elastic IP ensures a static public address.
 
-<details>
-  <summary>View Nginx EC2 & Elastic IP</summary>
-
-### Nginx EC2
-- Set up an EC2 instance as a load balancer.
-- Install Nginx and configure upstream servers.
 ![Nginx EC2](Images/nginx-ec2.png)
-
-### Elastic IP
-- Assign an Elastic IP to your Nginx instance for a static public address.
 ![Elastic IP](Images/nginx-eip.png)
-
-</details>
 
 ---
 
-## 8️⃣ Step 7: Apache Backend Servers
-> These servers host your applications. Nginx will distribute incoming traffic to them.
+## Step 7: Apache Backend Servers
+> These servers host your applications. The Nginx Load Balancer will distribute traffic evenly across them to ensure high availability.
+
+<details>
+  <summary>View Apache Backend Servers</summary>
 
 ### App Server 1
+- Hosts part of your application or service.
 ![App Server 1](Images/apache-server-1-status.png)
 
 ### App Server 2
+- Hosts another part of your application to ensure redundancy.
 ![App Server 2](Images/apache-server-2-status.png)
+
+</details>
 
 ---
 
-## 9️⃣ Step 8: Load Balancing Verification
-> Verify that requests to the Nginx Load Balancer are properly distributed to backend servers.
+## Step 8: Load Balancing Verification
+> After configuring Nginx and backend servers, test that traffic is being correctly distributed and served by both backend servers.
 
+<details>
+  <summary>View Load Balancing Verification</summary>
+
+### Server 1 Response
+- Displays content served by App Server 1.
 ![Server 1 Response](Images/browser-server1.png)
+
+### Server 2 Response
+- Displays content served by App Server 2.
 ![Server 2 Response](Images/browser-server2.png)
 
 </details>
+
 
 
 
@@ -515,6 +496,7 @@ App Server 2
 ```
 
 ✔ Round‑robin load balancing successful  
+
 
 
 
