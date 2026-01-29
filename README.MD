@@ -67,6 +67,17 @@ This setup is intentionally designed for **hands-on practice**, **cloud networki
   <img src="Architecture%20Diagram/Nginx-Apache-Lb-Architecture-Diagram.png" width="700">
 </p>
 
+## Step 1: VPC & Subnet Creation
+
+<details>
+<summary>View VPC & Subnet Setup</summary>
+
+<img src="images/create-vpc.png"/>
+<img src="images/creating-subnets.png"/>
+<img src="images/subnet-list.png"/>
+
+</details>
+
 ### Traffic Flow
 
 ```
@@ -371,6 +382,7 @@ App Server 2
 ```
 
 ✔ Round‑robin load balancing successful  
+
 
 
 
