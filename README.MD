@@ -24,6 +24,7 @@
 - [Objectives](#objectives)
 - [Architecture Overview](#-architecture-overview)
   - [Traffic Flow](#traffic-flow)
+- [AWS Setup](#aws-setup)
 - [AWS Resources Used](#-aws-resources-used)
 - [Security Group Design Detailed](#-security-group-design-detailed)
 - [NAT Gateway Role in Security](#-nat-gateway-role-in-security)
@@ -86,6 +87,33 @@ Apache App Server 2 (Private Subnet)
 ```
 
 ---
+
+## 📌AWS Setup
+
+<details>
+<summary>AWS Setup (Click here to View the setup!)</summary>
+
+### Step 1: VPC & Subnet Creation
+> This step covers creating a VPC and subnets, which are the foundation of your AWS network.
+
+<details>
+  <summary>View VPC & Subnet Setup</summary>
+
+  #### VPC Creation
+  - Create a new VPC with a suitable CIDR block
+  - Name it appropriately (e.g., `MyVPC`)
+
+  ![Create VPC](Images/create-vpc.png)
+
+  #### Subnet Creation
+  - Create subnets within the VPC
+  - Ensure proper IP ranges for each subnet
+
+  ![Creating Subnet](Images/creating-subnet.png)
+  ![Subnet List](Images/subnet-list.png)
+
+</details>
+</details>
 
 ## 🧱 AWS Resources Used
 
@@ -206,33 +234,6 @@ Post-setup:
 - SSH flows **through Nginx**  
 
 ---
-
-## 📌AWS Setup
-
-<details>
-<summary>AWS Setup (Click here to View the setup!)</summary>
-
-### Step 1: VPC & Subnet Creation
-> This step covers creating a VPC and subnets, which are the foundation of your AWS network.
-
-<details>
-  <summary>View VPC & Subnet Setup</summary>
-
-  #### VPC Creation
-  - Create a new VPC with a suitable CIDR block
-  - Name it appropriately (e.g., `MyVPC`)
-
-  ![Create VPC](Images/create-vpc.png)
-
-  #### Subnet Creation
-  - Create subnets within the VPC
-  - Ensure proper IP ranges for each subnet
-
-  ![Creating Subnet](Images/creating-subnet.png)
-  ![Subnet List](Images/subnet-list.png)
-
-</details>
-</details>
 
 
 ## ⚙️ Apache Server Configuration  
@@ -401,6 +402,7 @@ App Server 2
 ```
 
 ✔ Round‑robin load balancing successful  
+
 
 
 
