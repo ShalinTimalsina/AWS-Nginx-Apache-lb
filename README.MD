@@ -30,8 +30,9 @@ This setup is intentionally designed for **hands-on practice**, **cloud networki
 ## 🏗 Architecture Overview
 
 📂 **Architecture Diagram:**  
-Architecture%20Diagram/Nginx-Apache-Lb-Architecture-Diagram.png]
-(Architecture%20Diagram/Nginx-Apache-Lb-Architecture-Diagram.png)
+<p align="center">
+  <img src="Architecture%20Diagram/Nginx-Apache-Lb-Architecture-Diagram.png" width="700">
+</p>
 
 ### Traffic Flow
 ```
@@ -300,6 +301,7 @@ You should see:
     App Server 2
 
 Alternating on refresh ✔
+
 
 
 
