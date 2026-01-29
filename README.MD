@@ -18,21 +18,21 @@
 
 ---
 
-## 📑 Table of Contents
+-## Table of Contents
 
 - [Project Overview](#project-overview)
 - [Objectives](#objectives)
-- #-architecture-overview
-  - #traffic-flow
-- #-aws-resources-used
-- #-security-group-design-detailed
-- #-nat-gateway-role-in-security
-- [Temporary Bastion Access Clarification](#-temporary-bastion-access-clarification)
-- [Final Security Summary](#-final-security-summary)
-- #-access-strategy-bastion-style
-- #-apache-server-configuration
-- #️-nginx-load-balancer-configuration
-- #validation
+- [Architecture Overview](#architecture-overview)
+  - [Traffic Flow](#traffic-flow)
+- [AWS Resources Used](#aws-resources-used)
+- [Security Group Design Detailed](#security-group-design-detailed)
+- [NAT Gateway Role in Security](#nat-gateway-role-in-security)
+- [Temporary Bastion Access Clarification](#temporary-bastion-access-clarification)
+- [Final Security Summary](#final-security-summary)
+- [Access Strategy Bastion Style](#access-strategy-bastion-style)
+- [Apache Server Configuration](#apache-server-configuration)
+- [Nginx Load Balancer Configuration](#nginx-load-balancer-configuration)
+- [Validation](#validation)
 
 ---
 
@@ -308,6 +308,7 @@ App Server 2
 ```
 
 ✔ Round‑robin load balancing successful  
+
 
 
 
